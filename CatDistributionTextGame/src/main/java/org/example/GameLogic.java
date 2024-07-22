@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class GameLogic {
     static Scanner scanner = new Scanner(System.in);
     static Player player;       //player object stored in a static object of type player with the name player
+    public static boolean isRunning;
 
 
     //user input
@@ -93,11 +94,71 @@ public class GameLogic {
 
         player = new Player(name);      //create a new player object and pass the name as the argument
 
+        isRunning = true;               //set to true so game  will play
 
         //start main game loop
-        //gameLoop();
+        gameLoop();
+    }
+
+
+
+    //main game loop - will run as long as isRunning = true
+    public static void gameLoop() {
+        while(isRunning) {
+            printMenu;
+            int input = readInt("-> ", 3);
+            if(input == 1)
+                continueJourney();
+            else if(input == 2)
+                characterInfo;
+            else
+                isRunning = false;
+        }
+    }
+
+
+
+
+    //printing the main menu
+    public static void printMenu() {
+        clearConsole();
+        printHeading("MENU");
+        System.out.println("Choose an option:");
+        printSeparator(20);
+        System.out.println("(1) Continue on your journey");
+        System.out.println("(2) Character Info");
+        System.out.println("(3) Exit Game");
+    }
+
+
+
+    //method to continue the journey
+    public static void continueJourney() {
 
     }
+
+
+    //method to show character info
+    public static void characterInfo() {
+        clearConsole();
+        printHeading("CHARACTER INFO");
+        System.out.println(player.name + "\tHP: " + player.hp + "/" + player.maxHp);
+        printSeparator(20);
+        System.out.println("XP: " + player.xp);
+
+        //printing out traits
+        if(player.numAttackUpgrades > 0) {
+            System.out.println("Offensive trait(s): " + player.attackUpgrades[player.numAttackUpgrades -1]);
+            printSeparator(20);
+        }
+        if(player.numDefUpgrades > 0) {
+            System.out.println("Defensive trait(s): " + player.defUpgrades[player.numDefUpgrades - 1]);
+        }
+
+        anythingToContinue();
+    }
+
+
 
 
 
