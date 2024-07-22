@@ -36,26 +36,64 @@ public class Player extends Character {
 
 
     //immediately choosing a trait when creating a character; will not return anything
-    
+
     public void chooseTrait() {
         GameLogic.clearConsole();
         GameLogic.printHeading("Choose a trait:");
-        System.out.println("(1) " + attackUpgrades[numAttackUpgrades]);
-        System.out.println("(2) " + defUpgrades[numDefUpgrades]);
 
-        //player chooses
+        System.out.println("(1) Attack");
+        System.out.println("(2) Defense");
         int input = GameLogic.readInt("-> ", 2);
         GameLogic.clearConsole();
 
-        //attack or def upgrades
-        if(input == 1) {
-            GameLogic.printHeading("You chose " + attackUpgrades[numAttackUpgrades] + "!");
-            numAttackUpgrades++;
+        if (input == 1) {
+            System.out.println("(1) " + attackUpgrades[numAttackUpgrades]);
+
+            int input2 = GameLogic.readInt("->", 1);
+            GameLogic.clearConsole();
+
+            if (input2 == 1 ) {
+                GameLogic.printHeading("You chose " + attackUpgrades[numAttackUpgrades] + "!");
+                numAttackUpgrades++;
+            }
+
         } else {
-            GameLogic.printHeading("You chose " + defUpgrades[numDefUpgrades] + "!");
-            numDefUpgrades++;
+            System.out.println("(1) " + defUpgrades[numDefUpgrades]);
+
+            int input2 = GameLogic.readInt("->", 1);
+            GameLogic.clearConsole();
+
+            if (input2 == 1) {
+                GameLogic.printHeading("You chose " + defUpgrades[numDefUpgrades] + "!");
+                numDefUpgrades++;
+            }
+
         }
         GameLogic.anythingToContinue();
+
+
+
+
+
+
+
+
+
+
+
+        //player chooses
+//        int input = GameLogic.readInt("-> ", 2);
+//        GameLogic.clearConsole();
+
+        //attack or def upgrades
+//        if(input == 1) {
+//            GameLogic.printHeading("You chose " + attackUpgrades[numAttackUpgrades] + "!");
+//            numAttackUpgrades++;
+//        } else {
+//            GameLogic.printHeading("You chose " + defUpgrades[numDefUpgrades] + "!");
+//            numDefUpgrades++;
+//        }
+//        GameLogic.anythingToContinue();
     }
 
 
