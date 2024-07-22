@@ -110,7 +110,7 @@ public class GameLogic {
             if(input == 1)
                 continueJourney();
             else if(input == 2)
-                characterInfo;
+                characterInfo();
             else
                 isRunning = false;
         }
