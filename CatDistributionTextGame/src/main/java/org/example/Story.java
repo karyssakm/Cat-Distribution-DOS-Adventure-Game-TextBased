@@ -10,7 +10,24 @@ public class Story {
         System.out.println("STORY");
         GameLogic.printSeparator(30);
         System.out.println("You are going on an early morning walk, when you hear rustling in the bushes. You look to your right, and you see two glowy eyes staring at you.");
-        System.out.println("As you move closer, you hear a small purr followed by a growl. Through the leaves, you see... a kitty!");
+        System.out.println("As you move closer, you hear a small purr followed by a growl. Through the leaves, you see...");
+        System.out.println("\na kitty!");
+
+        System.out.println("                                    .-. ");
+        System.out.println("                                    | |");
+        System.out.println("                                    | |");
+        System.out.println("                                    | | ");
+        System.out.println("                                    | | ");
+        System.out.println("                /\\---/\\   _,---._ | | ");
+        System.out.println("               /^   ^   \\,'       `. ;");
+        System.out.println("              ( O   O    )           ;");
+        System.out.println("               `.=o=__,'             \\ ");
+        System.out.println("                 /         ,_,--.__   \\ ");
+        System.out.println("                /  _ )   ,'    `-. `-. \\ ");
+        System.out.println("               / ,' /  ,'         |  || \\ ");
+        System.out.println("              / /  / ,'           (,_)(,_) ");
+        System.out.println("             (,;  (,,)  ");
+
         System.out.println("There is no sign of its mother around, and now you are on a mission to capture this cat!");
         GameLogic.anythingToContinue();
     }

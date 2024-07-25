@@ -7,6 +7,16 @@ public class GameLogic {
     static Player player;       //player object stored in a static object of type player with the name player
     public static boolean isRunning;
 
+    //store random encounters
+    public static String[] encounters = {"Battle", "Battle", "Battle", "Rest", "Rest"};
+
+    //enemy names
+    public static String[] enemies = {"enemy1", "enemy2", "enemy3", "enemey4", "enemy5"};
+
+
+    public static int place = 0, act = 1;       //story elements & initialize
+    public static String[] places = {"Lake", "Mountain Trail Head", "Abandoned Cabin", "Peak of the Mountain"};
+
 
     //user input
     public static int readInt(String prompt, int userChoices) {
@@ -92,7 +102,11 @@ public class GameLogic {
 
         } while(!nameSet);              //player says no so the loop starts over again
 
+        Story.printIntro();
+
         player = new Player(name);      //create a new player object and pass the name as the argument
+
+        Story.printFirstActIntro();
 
         isRunning = true;               //set to true so game  will play
 
@@ -105,7 +119,7 @@ public class GameLogic {
     //main game loop - will run as long as isRunning = true
     public static void gameLoop() {
         while(isRunning) {
-            printMenu;
+            printMenu();
             int input = readInt("-> ", 3);
             if(input == 1)
                 continueJourney();
@@ -122,7 +136,7 @@ public class GameLogic {
     //printing the main menu
     public static void printMenu() {
         clearConsole();
-        printHeading("MENU");
+        printHeading(places[place]);
         System.out.println("Choose an option:");
         printSeparator(20);
         System.out.println("(1) Continue on your journey");
@@ -134,7 +148,35 @@ public class GameLogic {
 
     //method to continue the journey
     public static void continueJourney() {
+        checkAct();
+        if(act != 4)
+            randomEncounter();
+    }
 
+
+    //changes game values based on player xp
+    public static void checkAct() {
+        if(player.xp >= 10 && act == 1) {
+            act = 2;
+            place = 1;
+            Story.printFirstActOutro();
+            player.chooseTrait();
+            Story.printSecondActIntro();
+
+        } else if (player.xp >= 50 && act == 2) {
+            act = 3;
+            place = 2;
+            Story.printSecondActOutro();
+            player.chooseTrait();
+            Story.printThirdActIntro();
+
+        } else if (player.xp >= 100 && act == 3) {
+            act = 4;
+            place = 3;
+            Story.printThirdActOutro();
+            player.chooseTrait();
+            Story.printFourthActIntro();
+        }
     }
 
 
@@ -145,6 +187,7 @@ public class GameLogic {
         System.out.println(player.name + "\tHP: " + player.hp + "/" + player.maxHp);
         printSeparator(20);
         System.out.println("XP: " + player.xp);
+        printSeparator(20);
 
         //printing out traits
         if(player.numAttackUpgrades > 0) {
