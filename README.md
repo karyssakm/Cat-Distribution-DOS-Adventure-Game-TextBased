@@ -5,7 +5,7 @@ Title: Cat Rescue Adventure Game
 Description:
 Developed a text-based adventure game using Java in IntelliJ, showcasing full stack software development skills. Designed an interactive and structured game world where players embark on an adventure to rescue a cat in the wild, with the storyline driven by player choices.
 
-Technical Details:
+#Technical Details
 
 Language and IDE: Java, IntelliJ IDEA
 Game Mechanics: Implemented game loops, a user interface, and various metrics for experience points (XP).
